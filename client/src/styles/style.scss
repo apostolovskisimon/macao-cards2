@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@300;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@300;700&display=swap");
+@import "./navbar";
+@import "./board";
 * {
     box-sizing: border-box;
     margin: 0;
@@ -10,23 +12,13 @@ body {
     background-repeat: no-repeat;
     height: 100vh;
 }
-.cards {
-    width: 50%;
-    margin: auto;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
+
 .back {
     position: absolute;
     z-index: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(255, 233, 233, 0.404), rgba(255, 233, 233, 0.404)),
-        url("https://opengameart.org/sites/default/files/hexagonal_background_1080p.png");
+    background: linear-gradient(rgba(255, 233, 233, 0.404), rgba(255, 233, 233, 0.404)), url("../assets/back.png");
     background-size: cover;
-    // border:5px solid #e7c3be;
     .opacity {
         padding-top: 15px;
         opacity: 1 !important;
@@ -55,16 +47,16 @@ body {
         -webkit-text-stroke-color: #e7c3be;
         -webkit-text-stroke-width: 1px;
     }
-    
+
     background-color: rgb(255, 247, 247);
     width: 19rem;
+    // height: 28.5rem;
     aspect-ratio: 1/1.5;
     border-radius: 20px;
     box-shadow: 5px 5px 30px -10px black;
     position: relative;
-    margin: 10px;
-    
-   
+    margin:  0 10px;
+
     .body {
         position: absolute;
         z-index: 0;
@@ -73,7 +65,7 @@ body {
         height: 100%;
         clip-path: polygon(0 18%, 100% 7%, 100% 94%, 0 60%);
         background: linear-gradient(rgb(255, 233, 233), rgba(216, 216, 216, 0.719), rgb(255, 233, 233)),
-            url("https://opengameart.org/sites/default/files/hexagonal_background_1080p.png");
+            url("../assets/back.png");
         background-size: cover;
 
         box-shadow: 5px 5px 30px -10px black;
@@ -85,7 +77,7 @@ body {
         flex-direction: column;
         align-items: center;
         .sign {
-            font-size: 35px;
+            font-size: 3em;
         }
         .joker-card {
             width: 150px;
@@ -130,7 +122,6 @@ body {
         font-weight: bold;
         -webkit-text-stroke-color: #e7c3be;
         -webkit-text-stroke-width: 2px;
-        // text-shadow:0 20px 16px  #e8beb5;
     }
     .sign {
         -webkit-text-stroke-color: #e7c3be;
