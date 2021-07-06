@@ -1,25 +1,34 @@
-import { useEffect } from "react";
-import { io } from "socket.io-client";
-import "./styles/style.scss";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
 import { Board } from "./components/Board";
-import Register from './components/Register';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navbar from './components/Navbar';
-
+import Navbar from "./components/Navbar";
+import Register from "./components/Register";
+import "./styles/style.scss";
 function App() {
-  const socket = io("localhost:8080");
+  // const socket = io("localhost:8080");
 
-  useEffect(() => {
-    console.log("socket", socket);
-  }, []);
+  // useEffect(() => {
+  //   console.log("socket", socket);
+  // }, []);
+  const isLoggedIn = localStorage.getItem("loggedin");
+
   return (
     <Router>
-      <Navbar/>
+      <Navbar />
       <Switch>
-        <Route  exact path="/" component={Register}/>
-        <Route path="/" component={Board}/>
+        <Route
+          exact
+          path="/register"
+          render={(props) =>
+            isLoggedIn ? <Redirect to="/" /> : <Register props={props} />
+          }
+        />
+        <Route path="/" component={Board} />
       </Switch>
-   
     </Router>
   );
 }
