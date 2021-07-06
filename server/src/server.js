@@ -1,7 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
-const mysql = require("mysql");
 const userRouter = require("./routes/user/index");
 
 const options = {
@@ -21,26 +20,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // routes
-app.use("/user", userRouter);
+app.use("/users", userRouter);
 
 const httpServer = require("http").createServer(app);
 const io = require("socket.io")(httpServer, options);
-
-const con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  database: "testsimon",
-  // password: ""
-});
-
-con.connect((err) => {
-  if (err) throw err;
-  console.log("Connected!");
-  con.query('SELECT * FROM users WHERE DisplayName = "hhh"', (error, res) => {
-    if (err) throw err;
-    console.log("res", res);
-  });
-});
 
 io.on("connection", (socket) => {
   console.log("someone connected", socket.id);
