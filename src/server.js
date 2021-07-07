@@ -30,12 +30,21 @@ const uri = `mongodb+srv://${mongoUser}:${mongoPass}@cluster0.mquyh.mongodb.net/
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
+let isMongo = false;
+
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", () => console.log("Connection established to MongoDB"));
+db.once("open", () => {
+  console.log("Connection established to MongoDB");
+  isMongo = true;
+});
 
 // routes
 // app.use("/users", userRouter);
+
+app.get("/", (req, res) => {
+  res.send(`Server running, mongo is ${isMongo}`);
+});
 
 const httpServer = require("http").createServer(app);
 const io = require("socket.io")(httpServer, options);
