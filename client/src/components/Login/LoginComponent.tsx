@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { FormValues } from "../Register/RegisterComponent";
 import { handleLogin } from "../../actions/auth/index";
 import { useHistory } from "react-router-dom";
+import { setIsLoggedIn } from "../../store/slices/authSlice/authSlice";
 interface Props {}
 
 const LoginComponent = (props: Props) => {
@@ -23,7 +24,7 @@ const LoginComponent = (props: Props) => {
     values: FormValues,
     formikHelpers: FormikHelpers<FormValues>
   ): void => {
-    handleLogin(values, history);
+    handleLogin(values, history, setIsLoggedIn);
   };
 
   return (

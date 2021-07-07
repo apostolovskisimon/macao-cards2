@@ -17,6 +17,11 @@ const Navbar = (props: Props) => {
             Board
           </Link>
         </li>
+        <li className="item">
+          <Link className="item-link" to="/create">
+            Create or Join a game
+          </Link>
+        </li>
         <li></li>
       </ul>
     </nav>

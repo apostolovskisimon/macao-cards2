@@ -1,130 +1,140 @@
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@300;700&display=swap");
 @import "./navbar";
 @import "./board";
+@import "./onboarding";
+
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 body {
-    background: url("../assets/table.jpg");
-    background-position: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
+  background: url("../assets/table.jpg");
+  background-position: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 .back {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  background: linear-gradient(
+      rgba(255, 233, 233, 0.404),
+      rgba(255, 233, 233, 0.404)
+    ),
+    url("../assets/back.png");
+  background-size: cover;
+  .opacity {
+    padding-top: 15px;
+    opacity: 1 !important;
+    font-size: 90px !important;
+    letter-spacing: 0 !important;
+    filter: drop-shadow(5px 7px 10px rgba(0, 0, 0, 0.33));
+    -webkit-filter: drop-shadow(5px 7px 10px rgba(0, 0, 0, 0.33));
+    -moz-filter: drop-shadow(5px 7px 10px rgba(0, 0, 0, 0.33));
+  }
+}
+.card {
+  .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    font-family: "Spartan", sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    letter-spacing: 20px;
+    color: #95001b;
+    opacity: 0.5;
+    width: 100%;
+    text-align: center;
+    -webkit-text-stroke-color: #e7c3be;
+    -webkit-text-stroke-width: 1px;
+  }
+
+  background-color: rgb(255, 247, 247);
+  width: 19rem;
+  // height: 28.5rem;
+  aspect-ratio: 1/1.5;
+  border-radius: 20px;
+  box-shadow: 5px 5px 30px -10px black;
+  position: relative;
+  margin: 0 10px;
+
+  .body {
     position: absolute;
     z-index: 0;
     top: 0;
-    background: linear-gradient(rgba(255, 233, 233, 0.404), rgba(255, 233, 233, 0.404)), url("../assets/back.png");
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0 18%, 100% 7%, 100% 94%, 0 60%);
+    background: linear-gradient(
+        rgb(255, 233, 233),
+        rgba(216, 216, 216, 0.719),
+        rgb(255, 233, 233)
+      ),
+      url("../assets/back.png");
     background-size: cover;
-    .opacity {
-        padding-top: 15px;
-        opacity: 1 !important;
-        font-size: 90px !important;
-        letter-spacing: 0 !important;
-        filter: drop-shadow(5px 7px 10px rgba(0, 0, 0, 0.33));
-        -webkit-filter: drop-shadow(5px 7px 10px rgba(0, 0, 0, 0.33));
-        -moz-filter: drop-shadow(5px 7px 10px rgba(0, 0, 0, 0.33));
-    }
-}
-.card {
-    .center {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 2;
-        font-family: "Spartan", sans-serif;
-        font-weight: 700;
-        font-size: 40px;
-        letter-spacing: 20px;
-        color: #95001b;
-        opacity: 0.5;
-        width: 100%;
-        text-align: center;
-        -webkit-text-stroke-color: #e7c3be;
-        -webkit-text-stroke-width: 1px;
-    }
 
-    background-color: rgb(255, 247, 247);
-    width: 19rem;
-    // height: 28.5rem;
-    aspect-ratio: 1/1.5;
-    border-radius: 20px;
     box-shadow: 5px 5px 30px -10px black;
-    position: relative;
-    margin:  0 10px;
+  }
 
-    .body {
-        position: absolute;
-        z-index: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        clip-path: polygon(0 18%, 100% 7%, 100% 94%, 0 60%);
-        background: linear-gradient(rgb(255, 233, 233), rgba(216, 216, 216, 0.719), rgb(255, 233, 233)),
-            url("../assets/back.png");
-        background-size: cover;
-
-        box-shadow: 5px 5px 30px -10px black;
-    }
-
-    .section {
-        margin: 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        .sign {
-            font-size: 3em;
-        }
-        .joker-card {
-            width: 150px;
-            opacity: 0.9;
-            filter: drop-shadow(5px 7px 10px rgba(0, 0, 0, 0.33));
-            -webkit-filter: drop-shadow(5px 7px 10px rgba(0, 0, 0, 0.33));
-            -moz-filter: drop-shadow(5px 7px 10px rgba(0, 0, 0, 0.33));
-        }
-    }
-    .header {
-        position: absolute;
-        top: 0;
-        z-index: 1;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-
-        .number,
-        .sign,
-        .joker-card {
-            transform: rotate(180deg);
-        }
-    }
-    .red {
-        color: #95001b;
-    }
-    .black {
-        color: black;
-    }
-    .number {
-        font-size: 50px;
-        font-family: "Spartan", sans-serif;
-        font-weight: bold;
-        -webkit-text-stroke-color: #e7c3be;
-        -webkit-text-stroke-width: 2px;
-    }
+  .section {
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .sign {
-        -webkit-text-stroke-color: #e7c3be;
-        -webkit-text-stroke-width: 1px;
+      font-size: 3em;
     }
+    .joker-card {
+      width: 150px;
+      opacity: 0.9;
+      filter: drop-shadow(5px 7px 10px rgba(0, 0, 0, 0.33));
+      -webkit-filter: drop-shadow(5px 7px 10px rgba(0, 0, 0, 0.33));
+      -moz-filter: drop-shadow(5px 7px 10px rgba(0, 0, 0, 0.33));
+    }
+  }
+  .header {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .number,
+    .sign,
+    .joker-card {
+      transform: rotate(180deg);
+    }
+  }
+  .red {
+    color: #95001b;
+  }
+  .black {
+    color: black;
+  }
+  .number {
+    font-size: 50px;
+    font-family: "Spartan", sans-serif;
+    font-weight: bold;
+    -webkit-text-stroke-color: #e7c3be;
+    -webkit-text-stroke-width: 2px;
+  }
+  .sign {
+    -webkit-text-stroke-color: #e7c3be;
+    -webkit-text-stroke-width: 1px;
+  }
 }

@@ -4,7 +4,7 @@ import LoginComponent from "./Login/LoginComponent";
 import RegisterComponent from "./Register/RegisterComponent";
 import { useEffect } from "react";
 
-const Register = (props: any) => {
+const Authenticate = (props: any) => {
   console.log("props", props);
   const history = useHistory();
   const [isLoginScreen, setIsLoginScreen] = useState<boolean>(true);
@@ -31,4 +31,4 @@ const Register = (props: any) => {
   );
 };
 
-export default Register;
+export default Authenticate;

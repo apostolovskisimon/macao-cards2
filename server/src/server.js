@@ -29,6 +29,10 @@ const io = require("socket.io")(httpServer, options);
 
 io.on("connection", (socket) => {
   console.log("someone connected", socket.id);
+
+  socket.on("karta", (args) => {
+    console.table(args);
+  });
 });
 
 httpServer.listen(port, null, null, () => console.log("running on port", port));

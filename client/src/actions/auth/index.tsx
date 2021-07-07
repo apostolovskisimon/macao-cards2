@@ -13,12 +13,17 @@ export const handleRegister = async (data: FormValues) => {
   }
 };
 
-export const handleLogin = async (data: FormValues, history: any) => {
+export const handleLogin = async (
+  data: FormValues,
+  history: any,
+  setIsLoggedIn: any
+) => {
   try {
     const res = await axios.post(api + "users/login", data);
     console.log(res);
+    localStorage.setItem("loggedin", "true");
+    setIsLoggedIn(true);
     history.push("/");
-    // localStorage.setItem("loggedin", "true");
   } catch (error) {
     console.log(error);
   }
