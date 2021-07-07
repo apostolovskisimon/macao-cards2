@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { io } from "socket.io-client";
+import { socket } from "../../socket";
 
 interface Props {}
 
@@ -13,12 +14,15 @@ const Onboarding = (props: Props) => {
 
   useEffect(() => {
     if (isUserLoggedIn) {
-      const socket = io("localhost:8080");
       console.log("socket", socket);
-      socket.emit("karta", { cart: "A Detelina" });
+      socket.emit("newUser", socket.id);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const createNewGame = () => {
+    socket.emit("create new game", { userId: socket.id, gameId: "ASD123" });
+  };
 
   if (!isUserLoggedIn) return <Redirect to="authenticate" />;
 
@@ -31,7 +35,9 @@ const Onboarding = (props: Props) => {
       </p>
 
       <div className="buttonsCont">
-        {!isFriendGame && <button>Create new game</button>}
+        {!isFriendGame && (
+          <button onClick={createNewGame}>Create new game</button>
+        )}
         <button onClick={handleFriendGame}>Play friends game</button>
 
         {isFriendGame && (

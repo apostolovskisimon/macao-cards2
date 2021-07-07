@@ -1,4 +1,4 @@
-const con = require("../../database/db");
+// const con = require("../../database/db");
 
 registerUser = (data) => {
   const query = "INSERT INTO Users(email, displayName, password) VALUES(?,?,?)";
